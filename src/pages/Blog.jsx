@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import usePosts from '../hooks/usePosts';
 import { useState } from 'react';
-import DeleteButton from './DeleteButton';
+import DeleteButton from '../components/DeleteButton';
 
 export default function Blog() {
   const { postId } = useParams();

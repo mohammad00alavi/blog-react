@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import usePosts from "../hooks/usePosts";
 import Post from "./Post";
 import { Link } from "react-router-dom";
-import DeleteButton from "./DeleteButton";
+import DeleteButton from "../components/DeleteButton";
 
 export default function Home() {
   const { blogPosts, isLoading, fetchPosts } = usePosts();
