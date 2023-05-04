@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import usePosts from "../hooks/usePosts";
+import Post from "./Post";
+import { Link } from "react-router-dom";
+import DeleteButton from "./DeleteButton";
 
 export default function Home() {
-  const { blogPosts, error, isLoading, fetchPosts } = usePosts();
-  console.log(blogPosts, error, isLoading, fetchPosts)
+  const { blogPosts, isLoading, fetchPosts } = usePosts();
   useEffect(() => {
     fetchPosts();
-  })
+  },[])
 
   if(isLoading) {
     return (
@@ -16,7 +18,17 @@ export default function Home() {
 
   return (
     <>
-      <div>Home</div>
+      <h1>Home</h1>
+      <div>
+        {blogPosts?.map((item) => (
+          <div key={item.id}>
+            <Link  to={`/blog/${item.id}`}>
+              <Post title={item.title} description={item.description} postDate={item.date} author={item.author} />
+            </Link>
+            <DeleteButton postId={item.id} />
+          </div>
+        ))}
+      </div>
     </>
   )
 }

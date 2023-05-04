@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 
 const useFetchPosts = () => {
     const [blogPosts, setBlogPosts] = useState([]);
@@ -25,10 +25,6 @@ const useFetchPosts = () => {
             setIsLoading(true);
         }
     }, []);
-
-    /* useEffect(() => {
-        fetchPosts();
-    }, []); */
 
     return { blogPosts, isLoading, setIsLoading, error, fetchPosts };
 };
