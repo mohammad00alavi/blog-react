@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import usePosts from "../hooks/usePosts";
+import Post from "./Post";
 
 export default function Home() {
   const { blogPosts, error, isLoading, fetchPosts } = usePosts();
-  console.log(blogPosts, error, isLoading, fetchPosts)
   useEffect(() => {
     fetchPosts();
-  })
+  },[])
 
   if(isLoading) {
     return (
@@ -16,7 +16,12 @@ export default function Home() {
 
   return (
     <>
-      <div>Home</div>
+      <h1>Home</h1>
+      <div>
+        {blogPosts?.map(item => (
+          <Post key={item.id} title={item.title} description={item.description} postDate={item.date} author={item.author} />
+        ))}
+      </div>
     </>
   )
 }

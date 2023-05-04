@@ -1,5 +1,6 @@
 import { createContext, useCallback, useState } from "react"
 import useFetchPosts from "./hooks/useFetchPosts";
+import useWritePosts from "./hooks/useWritePosts";
 
 const BlogContext = createContext({
   blogPosts: [],
@@ -7,11 +8,12 @@ const BlogContext = createContext({
   setIsLoading: () => {},
   error: '',
   fetchPosts: () => {},
-
+  writePosts: (post) => {},
 });
 
 export const BlogProvider = ({ children }) => {
   const { blogPosts, isLoading, setIsLoading, error, fetchPosts } = useFetchPosts();
+  const writePosts = useWritePosts();
 
   const context = {
     blogPosts,
@@ -19,6 +21,7 @@ export const BlogProvider = ({ children }) => {
     setIsLoading,
     error,
     fetchPosts,
+    writePosts,
 
   }
   return (
