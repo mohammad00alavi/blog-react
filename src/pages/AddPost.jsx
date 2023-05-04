@@ -1,5 +1,6 @@
 import { useState } from "react";
 import usePosts from "../hooks/usePosts";
+import { useNavigate } from "react-router-dom";
 
 export default function AddPost() {
   const [postData, setPostData] = useState({
@@ -8,6 +9,7 @@ export default function AddPost() {
     author: '',
     date: '',
   }),
+    navigate = useNavigate(),
     { writePosts } = usePosts(),
    titleChangeHandler = (e) => {
     const value = e.target.value;
@@ -24,6 +26,7 @@ export default function AddPost() {
     onSubmitHandler = (e) => {
       e.preventDefault();
       writePosts(postData);
+      navigate('/');
     }
   
   return (

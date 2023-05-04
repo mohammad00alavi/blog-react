@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import usePosts from '../hooks/usePosts';
 import { useState } from 'react';
+import DeleteButton from './DeleteButton';
 
 export default function Blog() {
   const { postId } = useParams();
@@ -62,6 +63,7 @@ export default function Blog() {
       <p>{postData?.description}</p>
       <p>Author: {postData?.author}</p>
       <button onClick={editHandler}>Edit</button>
+      <DeleteButton postId={post.id} redirect={true} />
     </div>
     
   );
